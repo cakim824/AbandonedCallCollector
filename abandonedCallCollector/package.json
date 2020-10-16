@@ -1,0 +1,56 @@
+{
+  "name": "call-catcher",
+  "version": "1.0.0",
+  "main": "collector.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon collector.js",
+    "start": "node collector.js",
+    "start:dev": "npm run cp:dev && cross-env NODE_ENV=development node collector.js",
+    "start:prod": "npm run cp:prod && cross-env NODE_ENV=production node collector.js",
+    "cp:dev": "ncp ./.env.development ./.env ",
+    "cp:prod": "ncp ./.env.production ./.env ",
+    "test:call-catcher": "node test/jobs/call-catcher.test.js",
+    "start:pm2": "pm2 start ecosystem.config.js",
+    "start:dev:pm2": "pm2 start ecosystem.config.js --env development",
+    "start:prod:pm2": "pm2 start ecosystem.config.js --env production",
+    "reload:pm2": "pm2 reload ecosystem.config.js",
+    "reload:dev:pm2": "pm2 reload ecosystem.config.js --env development",
+    "reload:prod:pm2": "pm2 reload ecosystem.config.js --env production",
+    "test:unit": "jest test/unit/*.spec.js",
+    "lint": "eslint .",
+    "jsdoc": "jsdoc -c jsdoc.json",
+    "recovery:call-catcher": "run-func ./scripts/recovery-call-catcher.js recoveryCallCatcherData"
+  },
+  "engines": {
+    "node": ">= 7.6.0"
+  },
+  "dependencies": {
+    "cron": "1.4.1",
+    "dayjs": "1.7.7",
+    "dotenv": "5.0.1",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "mssql": "4.1.0",
+    "mysql2": "1.6.4",
+    "ramda": "0.26.1",
+    "rxjs": "^6.3.2",
+    "winston": "3.1.0",
+    "winston-daily-rotate-file": "3.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "5.1.6",
+    "docdash": "1.0.2",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^23.6.0",
+    "jsdoc": "3.5.5",
+    "ncp": "2.0.0",
+    "nodemon": "1.18.7",
+    "prettier": "^1.15.3",
+    "run-func": "1.0.2"
+  }
+}
