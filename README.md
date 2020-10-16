@@ -1,1 +1,1 @@
-# RecordCollector
+# RecordsCollector
